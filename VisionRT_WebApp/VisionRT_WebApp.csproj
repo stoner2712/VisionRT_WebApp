@@ -164,7 +164,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\NewPatientForm.cshtml" />
-    <Content Include="Views\Home\ViewPatients.cshtml" />
+    <Content Include="Views\Home\UpdatePatients.cshtml" />
+    <Content Include="Views\Home\_GridView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -186,6 +187,10 @@
     <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
       <Project>{13d1e0af-02fb-489e-bf89-ff82c6085d37}</Project>
       <Name>DataLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAppDB\WebAppDB.sqlproj">
+      <Project>{fe3d0236-8dc1-4cdb-b1fe-502366f88e07}</Project>
+      <Name>WebAppDB</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

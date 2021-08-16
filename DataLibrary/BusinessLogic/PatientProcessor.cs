@@ -33,5 +33,13 @@ namespace DataLibrary.BusinessLogic
 
             return SqlDataAccess.LoadData<DataPatientModel>(sql);
         }
+
+        //public static List<DataPatientModel> SearchPatient()
+        //{
+        //    string sql = @"select FirstName, LastName, DateOfBirth, Gender
+        //                    from dbo.Patient;";
+
+        //    return SqlDataAccess.SearchData<DataPatientModel>(sql);
+        //}
     }
 }

@@ -5,6 +5,7 @@ using DataLibrary.BusinessLogic;
 using DataLibrary.DataModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace VisionRT_WebApp.Controllers
 {
@@ -12,7 +13,42 @@ namespace VisionRT_WebApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var data = PatientProcessor.LoadPatients();
+
+            List<PatientModel> patients = new List<PatientModel>();
+
+            foreach (var row in data)
+            {
+                patients.Add(new PatientModel
+                {
+                    FirstName = row.FirstName,
+                    LastName = row.LastName,
+                    DateOfBirth = row.DateOfBirth,
+                    Gender = row.Gender
+                });
+            }
+
+            return View(patients);
+        }
+
+        public PartialViewResult SearchPatients(string searchText)
+        {
+            var data = PatientProcessor.LoadPatients();
+
+            List<PatientModel> patients = new List<PatientModel>();
+
+            foreach (var row in data)
+            {
+                patients.Add(new PatientModel
+                {
+                    FirstName = row.FirstName,
+                    LastName = row.LastName,
+                    DateOfBirth = row.DateOfBirth,
+                    Gender = row.Gender
+                });
+            }
+            var result = patients.Where(p => p.LastName.ToLower().Contains(searchText.ToLower())).ToList();
+            return PartialView("_GridView", result);
         }
 
         public ActionResult About()
@@ -29,7 +65,7 @@ namespace VisionRT_WebApp.Controllers
             return View();
         }
 
-        public ActionResult ViewPatients()
+        public ActionResult UpdatePatients()
         {
             ViewBag.Message = "Patients List";
 

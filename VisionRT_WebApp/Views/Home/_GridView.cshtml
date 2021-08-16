@@ -1,0 +1,45 @@
+﻿@model List<VisionRT_WebApp.Models.PatientModel>
+
+
+<div class="col-sm-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center">No Record Found!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
